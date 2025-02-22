@@ -1,0 +1,7 @@
+name: CyberCore
+version: '1.0-SNAPSHOT'
+main: me.cyberword.cybercore.CyberCore
+api-version: '1.21'
+load: STARTUP
+authors: [ CyberWord ]
+description: My own Plugin Core
