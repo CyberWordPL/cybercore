@@ -11,9 +11,9 @@ import org.jetbrains.annotations.NotNull;
 // Basic Class that implements Inventory Logic
 public abstract class InventoryGui implements InventoryHolder {
 
-    private final InventoryType _type;
-    private final Component _title;
-    private final Inventory _inventory;
+    protected final InventoryType _type;
+    protected final Component _title;
+    protected final Inventory _inventory;
 
     public InventoryGui(JavaPlugin plugin, InventoryType type, Component title) {
         _type = type;
