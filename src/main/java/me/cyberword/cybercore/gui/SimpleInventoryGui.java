@@ -49,6 +49,8 @@ public class SimpleInventoryGui extends InventoryGui {
     }
 
     public void addNonBackgroundItem(int slot, IInventoryGuiItem item) {
+        _items.set(slot, item);
+
         updateInventorySlots();
     }
 
