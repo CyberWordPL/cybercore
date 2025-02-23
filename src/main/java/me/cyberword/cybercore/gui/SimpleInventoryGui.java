@@ -33,7 +33,7 @@ public class SimpleInventoryGui extends InventoryGui {
         _backgroundItem = backgroundItem;
 
         for(int i = 0; i < size; i++) {
-            _items.set(i, new BackgroundItem(backgroundItem));
+            _items.add(new BackgroundItem(backgroundItem));
         }
 
         updateInventorySlots();
@@ -71,19 +71,24 @@ public class SimpleInventoryGui extends InventoryGui {
 
     @Override
     public void itemClickedEvent(InventoryClickEvent event) {
-        IInventoryGuiItem item = _items.get(event.getSlot());
+        if(_items.size() >= event.getSlot()) {
 
-        if (item instanceof BackgroundItem) {
+            IInventoryGuiItem item = _items.get(event.getSlot());
+
+            if (item instanceof BackgroundItem) {
+                event.setCancelled(true);
+                return;
+            }
+
+            if (!(item instanceof ClickableItem clickableItem)) {
+                event.setCancelled(true);
+                return;
+            }
+
+            clickableItem.onClick(event, this);
+            updateInventorySlots();
+        } else {
             event.setCancelled(true);
-            return;
         }
-
-        if(!(item instanceof ClickableItem clickableItem)) {
-            event.setCancelled(true);
-            return;
-        }
-
-        clickableItem.onClick(event, this);
-        updateInventorySlots();
     }
 }
