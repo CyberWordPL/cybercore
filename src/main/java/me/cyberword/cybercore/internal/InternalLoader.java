@@ -1,7 +1,7 @@
-package me.cyberword.cybercore.gui.internal;
+package me.cyberword.cybercore.internal;
 
 import me.cyberword.cybercore.CyberCore;
-import me.cyberword.cybercore.gui.internal.listeners.InternalListenersFetcher;
+import me.cyberword.cybercore.internal.listeners.InternalListenersFetcher;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 

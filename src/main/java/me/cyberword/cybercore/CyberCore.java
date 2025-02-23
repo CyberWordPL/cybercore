@@ -1,7 +1,6 @@
 package me.cyberword.cybercore;
 
-import me.cyberword.cybercore.gui.internal.InternalLoader;
-import org.bukkit.Bukkit;
+import me.cyberword.cybercore.internal.InternalLoader;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CyberCore extends JavaPlugin {
