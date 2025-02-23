@@ -1,4 +1,4 @@
-package me.cyberword.cybercore.internal.listeners;
+package me.cyberword.cybercore.listeners;
 
 import me.cyberword.cybercore.gui.InventoryGui;
 import org.bukkit.event.EventHandler;
