@@ -9,6 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /// Basic Inventory GUI
@@ -24,6 +25,8 @@ public class SimpleInventoryGui extends InventoryGui {
 
     public SimpleInventoryGui(InventoryType type, Component title, ItemStack backgroundItem) {
         super(type, title);
+
+        _items = new ArrayList<>();
 
         int size = type.getDefaultSize();
 
