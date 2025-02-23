@@ -58,7 +58,7 @@ public class SimpleInventoryGui extends InventoryGui {
         updateInventorySlots();
     }
 
-    void clearSlot(int slot) {
+    public void clearSlot(int slot) {
         _items.set(slot, new BasicItem(ItemStack.empty()));
 
         updateInventorySlots();
