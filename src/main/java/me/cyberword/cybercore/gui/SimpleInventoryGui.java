@@ -5,6 +5,7 @@ import me.cyberword.cybercore.gui.items.BasicItem;
 import me.cyberword.cybercore.gui.items.ClickableItem;
 import me.cyberword.cybercore.gui.items.IInventoryGuiItem;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
@@ -71,8 +72,7 @@ public class SimpleInventoryGui extends InventoryGui {
 
     @Override
     public void itemClickedEvent(InventoryClickEvent event) {
-        if(_items.size() >= event.getSlot()) {
-
+        if(event.getRawSlot() < _items.size() && event.getRawSlot() >= 0) {
             IInventoryGuiItem item = _items.get(event.getSlot());
 
             if (item instanceof BackgroundItem) {
@@ -87,8 +87,6 @@ public class SimpleInventoryGui extends InventoryGui {
 
             clickableItem.onClick(event, this);
             updateInventorySlots();
-        } else {
-            event.setCancelled(true);
         }
     }
 }
