@@ -1,6 +1,6 @@
 package me.cyberword.cybercore.gui.items;
 
-import me.cyberword.cybercore.gui.SimpleInventoryGui;
+import me.cyberword.cybercore.gui.IItemSystemInventoryGui;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -15,5 +15,11 @@ public abstract class ClickableItem implements IInventoryGuiItem {
         return _item;
     }
 
-    public abstract void onClick(InventoryClickEvent event, SimpleInventoryGui inventoryGui);
+    @Override
+    public void inventoryClickEventHandler(InventoryClickEvent event, IItemSystemInventoryGui gui) {
+        event.setCancelled(true);
+        onClick(event, gui);
+    }
+
+    public abstract void onClick(InventoryClickEvent event, IItemSystemInventoryGui inventoryGui);
 }

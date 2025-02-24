@@ -1,5 +1,7 @@
 package me.cyberword.cybercore.gui.items;
 
+import me.cyberword.cybercore.gui.IItemSystemInventoryGui;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class BackgroundItem implements IInventoryGuiItem {
@@ -15,5 +17,10 @@ public class BackgroundItem implements IInventoryGuiItem {
 
     public ItemStack getItem() {
         return _item;
+    }
+
+    @Override
+    public void inventoryClickEventHandler(InventoryClickEvent event, IItemSystemInventoryGui gui) {
+        event.setCancelled(true);
     }
 }

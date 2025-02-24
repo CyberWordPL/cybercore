@@ -5,7 +5,6 @@ import me.cyberword.cybercore.gui.items.BasicItem;
 import me.cyberword.cybercore.gui.items.ClickableItem;
 import me.cyberword.cybercore.gui.items.IInventoryGuiItem;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
@@ -14,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /// Basic Inventory GUI
-public class SimpleInventoryGui extends InventoryGui {
+public class SimpleInventoryGui extends InventoryGui implements IItemSystemInventoryGui {
     private ItemStack _backgroundItem;
-    private List<IInventoryGuiItem> _items;
+    private final List<IInventoryGuiItem> _items;
 
     private void updateInventorySlots() {
         for (int i = 0; i < _items.size(); i++) {
@@ -75,18 +74,14 @@ public class SimpleInventoryGui extends InventoryGui {
         if(event.getRawSlot() < _items.size() && event.getRawSlot() >= 0) {
             IInventoryGuiItem item = _items.get(event.getSlot());
 
-            if (item instanceof BackgroundItem) {
-                event.setCancelled(true);
-                return;
-            }
+            item.inventoryClickEventHandler(event, this);
 
-            if (!(item instanceof ClickableItem clickableItem)) {
-                event.setCancelled(true);
-                return;
-            }
-
-            clickableItem.onClick(event, this);
             updateInventorySlots();
         }
+    }
+
+    @Override
+    public List<IInventoryGuiItem> getItems() {
+        return _items;
     }
 }
